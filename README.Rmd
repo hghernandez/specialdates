@@ -1,0 +1,117 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%")
+```
+
+```{r echo=FALSE}
+
+devtools::load_all("C:/Users/hernan.hernandez/Documents/specialdates")
+
+```
+
+
+# specialdates
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+El objetivo de este paquete es ofrecer algunas funciones para **comparar** las ventas o transacciones de un negocio durante **fechas especiales o comerciales,** como el dia del padre o el Hot Sale.
+
+## Installation
+
+Puede instalar la version de desarrollo desde:
+
+```r
+# install.packages("devtools")
+devtools::install_github("hghernandez/specialdates")
+```
+
+## Conmparaciones de dias
+
+Aquí se muestran ejemplos del uso de la función para comparar fechas utilizando distintos niveles de agrupamiento.
+
+### Agrupado a nivel de paises
+
+```{r example}
+library(specialdates)
+
+data(ventas)
+
+country <- comparables.days.means(df = ventas,
+                                         fields.date = "fechas",
+                                         valor = "cantidad",
+                                         fecha = c('2022-06-17','2022-06-19'),
+                                         agrupador = "country",
+                                         festividad = "Dia del padre",
+                                         mov.days= c('2021-06-18','2021-06-20'),
+                                         graf.label = TRUE)
+
+country$cuadro
+
+country$grafico
+```
+
+### Agrupado a nivel de merchant
+
+```{r}
+merchant <- comparables.days.means(df = ventas,
+                                                fields.date = "fechas",
+                                                valor = "cantidad",
+                                                fecha = c('2022-06-17','2022-06-19'),
+                                                agrupador = "merchant",
+                                                festividad = "Dia del padre",
+                                                mov.days = c('2021-06-18','2021-06-20'),
+                                                graf.label = TRUE)
+
+merchant$cuadro
+
+merchant$grafico
+
+```
+
+## Heatmap calendar
+
+En los proximos ejemplos crearemos un heatmap sobre un calendario para visualizar el comportamiento de los negocios o de los países.
+La función __heatmap.calendar__ crea el mapa de calor, para distintos niveles de agrupamiento de a un valor a la vez. Por ello, es importante filtrar los distintos valores de agrupamiento y generar los correspondientes calendarios.
+
+### Heatmap calendar a nivel de paises
+
+```{r}
+heatmap.calendar(df = ventas,
+fini = '2022-06-01',
+ffin = '2022-06-30',
+fields.date = 'fechas',
+agrupador = 'country',
+filtro = 'Argentina',
+valor = 'cantidad',
+titulo = 'Ranking de ventas',
+exportar = FALSE)
+
+```
+
+```{r}
+
+heatmap.calendar(
+  df = ventas,
+  fini = '2022-06-01',
+  ffin = '2022-06-30',
+  fields.date = 'fechas',
+  agrupador = 'country',
+  filtro = 'Uruguay',
+  valor = 'cantidad',
+  titulo = 'Ranking de ventas',
+  exportar = FALSE
+)
+
+```
+

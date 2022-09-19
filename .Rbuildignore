@@ -1,0 +1,5 @@
+^specialdates\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^devtools.R
+^README\.Rmd$

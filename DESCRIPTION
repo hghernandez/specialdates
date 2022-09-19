@@ -1,0 +1,14 @@
+Package: specialdates
+Title: Métricas para analizar fechas comerciales mediante comparaciones temporales.
+Version: 0.1.0
+imports: dplyr,tidyr,lubridate,ggplot2,openxlsx,rlang, scales.
+Authors@R: 
+    person("Hernan","Hernandez", ,"hernanghernandez@gmail.com", role = c("aut", "cre"))
+Description: Este paquete ofrece tres funciones que permiten analizar el comportamiento de un negocio durante las fechas comerciales o especiales mediante la comparación temporal con la semana, el mes y el año previo. Además, permite exportar el reporte en un archivo excel y mostrar un mapa de calor en un calendario.
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
