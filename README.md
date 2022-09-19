@@ -3,7 +3,7 @@
 
     #> i Loading specialdates
 
-<img src="inst/figures/imgfile.png" style="width:2.6cm" />
+<img src="inst/figures/imgfile.png" align="right" width="100"/>
 
 # specialdates
 
