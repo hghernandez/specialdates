@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-    #> ℹ Loading specialdates
+    #> i Loading specialdates
+
+![](inst/figures/imgfile.png)
 
 # specialdates
 
@@ -21,7 +23,7 @@ Puede instalar la version de desarrollo desde:
 devtools::install_github("hghernandez/specialdates")
 ```
 
-## Conmparaciones de dias
+## Comparaciones de dias
 
 Aquí se muestran ejemplos del uso de la función para comparar fechas
 utilizando distintos niveles de agrupamiento.
@@ -41,13 +43,9 @@ country <- comparables.days.means(df = ventas,
                                          festividad = "Dia del padre",
                                          mov.days= c('2021-06-18','2021-06-20'),
                                          graf.label = TRUE)
-#> Warning: `label_number_si()` was deprecated in scales 1.2.0.
-#> Please use the `scale_cut` argument of `label_number()` instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 
 country$cuadro
-#> # A tibble: 2 × 10
+#> # A tibble: 2 x 10
 #>   country       n    pw   `%`    pm   `%`    py   `%`  pmov   `%`
 #>   <chr>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #> 1 Argentina 2013.  1009  99.5 1345   49.6 1354.  48.6  1555  29.4
@@ -71,7 +69,7 @@ merchant <- comparables.days.means(df = ventas,
                                                 graf.label = TRUE)
 
 merchant$cuadro
-#> # A tibble: 4 × 10
+#> # A tibble: 4 x 10
 #>   merchant       n    pw    `%`    pm    `%`    py    `%`  pmov   `%`
 #>   <chr>      <dbl> <dbl>  <dbl> <dbl>  <dbl> <dbl>  <dbl> <dbl> <dbl>
 #> 1 Merchant A 1001.  632.  58.4   886   12.9   772.  29.6   953    5  
