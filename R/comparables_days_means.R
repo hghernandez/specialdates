@@ -10,6 +10,7 @@
 #' @param valor El valor con el cuál calcular los promedios.
 #' @param fecha vector con las fechas comerciales, es decir c('fecha1','fecha2').
 #' @param agrupador El nivel de agrupamiento (por ej: Merchant, Pais, Región).
+#' @param filtro NULL. Si desea aplicar un filtro al campo agrupador indicar el valor.
 #' @param festividad el nombre de la fecha comercial.
 #' @param mov.days las fechas en que sucedió el evento anterior como vector, es decir c('fecha1','fecha2')
 #' @param graf.label booleano para indicar si queremos que agregue el valor encima de la barra poner TRUE
@@ -22,12 +23,19 @@
 
 
 
-comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,festividad,mov.days= NULL, graf.label=FALSE){
+comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,filtro=NULL,festividad,mov.days= NULL, graf.label=FALSE){
 
-
+if(is.null(filtro)){
   df <- dplyr::rename(df,Valor= valor, date=fields.date)
   df <- dplyr::group_by(df, !!rlang::sym(agrupador),date)
   df <- dplyr::summarise(df,Valor= sum(Valor))
+}else{
+  df <- dplyr::rename(df,Valor= valor, date=fields.date)
+  df <- dplyr::group_by(df, !!rlang::sym(agrupador),date)
+  df <- dplyr::summarise(df,Valor= sum(Valor))
+  df <- dplyr::filter(df,!!rlang::sym(agrupador)==filtro)
+}
+
 
   if(length(mov.days) > 0){
 
@@ -144,7 +152,7 @@ comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,festivid
       ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                         labels= c("Semana Previa", "Mes Previo","Año Previo",paste0(festividad," anterior"),festividad))+
       ggplot2::geom_text(ggplot2::aes(label=round(Promedio,1)),position= ggplot2::position_dodge(width=0.9), vjust=-0.25, size= 3,colour = "#191C3C", check_overlap = TRUE)+
-      ggplot2::guides(fill="none")+
+      #ggplot2::guides(fill="none")+
       theme_geo()
     }else{
       grafico <- ggplot2::ggplot(data.graf,
@@ -153,7 +161,7 @@ comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,festivid
         ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale()))+
         ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                                    labels= c("Semana Previa", "Mes Previo","Año Previo",paste0(festividad," anterior"),festividad))+
-        ggplot2::guides(fill="none")+
+        #ggplot2::guides(fill="none")+
         theme_geo()
     }
     #Arma la tabla de datos
@@ -273,7 +281,7 @@ comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,festivid
       ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                                  labels= c("Semana Previa", "Mes Previo","Año Previo",festividad))+
       ggplot2::geom_text(ggplot2::aes(label=round(Promedio,1)),position=ggplot2::position_dodge(width=0.9), vjust=-0.25, size= 3,colour = "#191C3C",check_overlap = TRUE)+
-      ggplot2::guides(fill="none")+
+      #ggplot2::guides(fill="none")+
       theme_geo()
     }else{
       grafico <- ggplot2::ggplot(data.graf,
@@ -282,7 +290,7 @@ comparables.days.means <- function(df,fields.date,valor,fecha,agrupador,festivid
         ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale()))+
         ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                                    labels= c("Semana Previa", "Mes Previo","Año Previo",festividad))+
-        ggplot2::guides(fill="none")+
+        #ggplot2::guides(fill="none")+
         theme_geo()
     }
 

@@ -10,6 +10,7 @@ comparables.days.means(
   valor,
   fecha,
   agrupador,
+  filtro = NULL,
   festividad,
   mov.days = NULL,
   graf.label = FALSE
@@ -25,6 +26,8 @@ comparables.days.means(
 \item{fecha}{vector con las fechas comerciales, es decir c('fecha1','fecha2').}
 
 \item{agrupador}{El nivel de agrupamiento (por ej: Merchant, Pais, Región).}
+
+\item{filtro}{NULL. Si desea aplicar un filtro al campo agrupador indicar el valor.}
 
 \item{festividad}{el nombre de la fecha comercial.}
 

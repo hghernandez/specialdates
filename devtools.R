@@ -14,7 +14,10 @@ usethis::use_readme_rmd()
 
 load("data/ventas.rda")
 
-devtools::load_all("C:/Users/hernan.hernandez/Documents/specialdates")
+devtools::load_all("C:/Users/usuario/Documents/Paquetes propios/specialdates")
+
+
+
 
 
 s <- heatmap.calendar(df = ventas,
@@ -26,6 +29,23 @@ s <- heatmap.calendar(df = ventas,
                  valor = "cantidad",
                  titulo = "specialdates",
                  exportar = FALSE)
+
+
+
+country_filter <- comparables.days.means(df = ventas,
+                                  fields.date = "fechas",
+                                  valor = "cantidad",
+                                  fecha = c('2022-06-17','2022-06-19'),
+                                  agrupador = "country",
+                                  filtro = "Argentina",
+                                  festividad = "Dia del padre",
+                                  mov.days= c('2021-06-18','2021-06-20'),
+                                  graf.label = TRUE)
+
+country_filter$cuadro
+
+country_filter$grafico
+
 
 
 library(hexSticker)

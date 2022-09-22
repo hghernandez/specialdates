@@ -80,6 +80,28 @@ merchant$grafico
 
 ```
 
+###Aplicamos un filtro al agrupador
+
+```{r}
+
+country_filter <- comparables.days.means(df = ventas,
+                                  fields.date = "fechas",
+                                  valor = "cantidad",
+                                  fecha = c('2022-06-17','2022-06-19'),
+                                  agrupador = "country",
+                                  filtro = "Argentina",
+                                  festividad = "Dia del padre",
+                                  mov.days= c('2021-06-18','2021-06-20'),
+                                  graf.label = TRUE)
+
+country_filter$cuadro
+
+country_filter$grafico
+
+```
+
+
+
 ## Heatmap calendar
 
 En los proximos ejemplos crearemos un heatmap sobre un calendario para visualizar el comportamiento de los negocios o de los países. La función **heatmap.calendar** crea el mapa de calor, para distintos niveles de agrupamiento de a un valor a la vez. Por ello, es importante filtrar los distintos valores de agrupamiento y generar los correspondientes calendarios.

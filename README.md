@@ -82,6 +82,31 @@ merchant$grafico
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
+\###Aplicamos un filtro al agrupador
+
+``` r
+
+country_filter <- comparables.days.means(df = ventas,
+                                  fields.date = "fechas",
+                                  valor = "cantidad",
+                                  fecha = c('2022-06-17','2022-06-19'),
+                                  agrupador = "country",
+                                  filtro = "Argentina",
+                                  festividad = "Dia del padre",
+                                  mov.days= c('2021-06-18','2021-06-20'),
+                                  graf.label = TRUE)
+
+country_filter$cuadro
+#> # A tibble: 1 x 10
+#>   country       n    pw   `%`    pm   `%`    py   `%`  pmov   `%`
+#>   <chr>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Argentina 2013.  1009  99.5  1345  49.6 1354.  48.6  1555  29.4
+
+country_filter$grafico
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
 ## Heatmap calendar
 
 En los proximos ejemplos crearemos un heatmap sobre un calendario para
@@ -105,7 +130,7 @@ titulo = 'Ranking de ventas',
 exportar = FALSE)
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 
@@ -122,4 +147,4 @@ heatmap.calendar(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
