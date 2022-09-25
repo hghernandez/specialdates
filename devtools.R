@@ -17,9 +17,6 @@ load("data/ventas.rda")
 devtools::load_all("C:/Users/usuario/Documents/Paquetes propios/specialdates")
 
 
-
-
-
 s <- heatmap.calendar(df = ventas,
                  fini = '2022-06-01',
                  ffin = '2022-06-30',

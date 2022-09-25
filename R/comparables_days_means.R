@@ -151,7 +151,7 @@ if(is.null(filtro)){
       ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale()))+
       ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                         labels= c("Semana Previa", "Mes Previo","Año Previo",paste0(festividad," anterior"),festividad))+
-      ggplot2::geom_text(ggplot2::aes(label=round(Promedio,1)),position= ggplot2::position_dodge(width=0.9), vjust=-0.25, size= 3,colour = "#191C3C", check_overlap = TRUE)+
+      ggplot2::geom_text(ggplot2::aes(label=scales::comma(round(Promedio),big.mark = ".", decimal.mark = ","), fontface= "bold"),position=ggplot2::position_dodge(width=0.9), vjust=4, size= 3,colour = "white" ,check_overlap = TRUE)+
       #ggplot2::guides(fill="none")+
       theme_geo()
     }else{
@@ -280,7 +280,7 @@ if(is.null(filtro)){
       ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale()))+
       ggplot2::scale_fill_manual(values = c("#B7AEFF","#F452E8","#56D26E","#9D00FF","#FF8EDD"),
                                  labels= c("Semana Previa", "Mes Previo","Año Previo",festividad))+
-      ggplot2::geom_text(ggplot2::aes(label=round(Promedio,1)),position=ggplot2::position_dodge(width=0.9), vjust=-0.25, size= 3,colour = "#191C3C",check_overlap = TRUE)+
+      ggplot2::geom_text(ggplot2::aes(label=scales::comma(round(Promedio),big.mark = ".", decimal.mark = ","), fontface= "bold"),position=ggplot2::position_dodge(width=0.9), vjust=4, size= 3,colour = "white" ,check_overlap = TRUE)+
       #ggplot2::guides(fill="none")+
       theme_geo()
     }else{
