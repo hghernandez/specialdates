@@ -97,7 +97,7 @@ heatmap.calendar <- function(df,fini,ffin,fields.date,agrupador,filtro=NULL,valo
     )
 
      if(exportar== TRUE){
-       ggplot2::ggsave(graf,filename = paste0("Heatmap",titulo," ",filtro,".png"),width = 10,height = 10,units = "cm", dpi = 200)
+       ggplot2::ggsave(graf,filename = paste0("Heatmap",titulo,"_",filtro,".png"),width = 10,height = 10,units = "cm", dpi = 200)
      }else{return(graf)}
 
 
